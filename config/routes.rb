@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to: 'pages#about'
   #resources :books #gives all routes for books 
-  resources :books, only: [:show]
+  resources :books, only: [:show, :index]
 end

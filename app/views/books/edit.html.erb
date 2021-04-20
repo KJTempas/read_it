@@ -1,27 +1,5 @@
 <h1>Edit article</h1>
 
-<% if @book.errors.any? %>
-  <h2>The following errors prevented the book from being saved</h2>
-  <ul>
-    <% @book.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-<%= form_with(model: @book, local: true) do |f| %>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
-
-  <p>
-    <%= f.label :author %><br/>
-    <%= f.text_field :author %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+<%= link_to 'Cancel and return to books listing', books_path %>

@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+    def show
+        @user = User.find(params[:id])
+        @books = @user.books #articles belonging to this user instance
+    end
+
     def new
         @user = User.new
     end
@@ -16,7 +21,7 @@ class UsersController < ApplicationController
             render 'edit' #show the form again
         end
     end
-    
+
     def create
         @user = User.new(user_params)
         if @user.save

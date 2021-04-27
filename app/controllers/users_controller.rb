@@ -4,6 +4,10 @@ class UsersController < ApplicationController
         @books = @user.books #articles belonging to this user instance
     end
 
+    def index
+        @users =User.all  
+    end
+    
     def new
         @user = User.new
     end

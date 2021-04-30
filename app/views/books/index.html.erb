@@ -1,3 +1,5 @@
   <h1 class="text-center mt-4">List of all books</h1>
   
+<%= will_paginate @books, :page_links => false %>
+
   <%= render 'book' %>

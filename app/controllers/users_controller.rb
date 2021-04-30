@@ -20,7 +20,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.update(user_params) #if updated is successful, send message to user
             flash[:notice] = "Your account information was successfully updated"
-            redirect_to books_path
+            redirect_to @user
         else   
             render 'edit' #show the form again
         end

@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
-        @books = @user.books #articles belonging to this user instance
+        #@books = @user.books #articles belonging to this user instance
+        @books = @user.books.paginate(page: params[:page], per_page: 4)
     end
 
     def index
-        @users =User.all  
+       # @users =User.all  
+       @users = User.paginate(page: params[:page], per_page: 4)
     end
     
     def new

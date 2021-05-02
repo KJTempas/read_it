@@ -1,6 +1,10 @@
 
 <h1 class="text-center mt-4">List of all  Read It users</h1>
   
-<%= will_paginate @users, :page_links => false %>
+
+  <div class="apple_pagination">
+      <%= will_paginate @books, :container => false %>
+  </div>
+
 
   <%= render 'user' %>

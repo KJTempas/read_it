@@ -1,5 +1,8 @@
   <h1 class="text-center mt-4">List of all books</h1>
   
-<%= will_paginate @books, :page_links => false %>
+  <div class="apple_pagination">
+      <%= will_paginate @books, :container => false %>
+  </div>
+
 
   <%= render 'book' %>

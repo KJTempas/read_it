@@ -1,12 +1,15 @@
 class BooksController < ApplicationController
     
     before_action :set_book, only: [:show, :edit, :update, :destroy]
-
+    before_action :require_user, except: [:show, :index]
+    #important to check require use before require same user
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+    
     def show
     end
 
     def index
-        #@books = Book.all
+        #@books = Book.all #before pagination
         @books = Book.paginate(page: params[:page], per_page: 4)
     end
 
@@ -50,6 +53,13 @@ end
 
 def book_params
     params.require(:book).permit(:title, :author)
+end
+
+def require_same_user
+    if current_user != @book.user
+        flash[:alert] = "You can only edit or delete your own book"
+        redirect_to @book
+    end
 end
 
 end

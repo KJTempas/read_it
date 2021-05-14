@@ -40,26 +40,26 @@ class BooksController < ApplicationController
         end
     end
 
-def destroy
-    @book.destroy
-    redirect_to books_path
-end
-
-private 
-
-def set_book
-    @book = Book.find(params[:id])
-end
-
-def book_params
-    params.require(:book).permit(:title, :author)
-end
-
-def require_same_user
-    if current_user != @book.user
-        flash[:alert] = "You can only edit or delete your own book"
-        redirect_to @book
+    def destroy
+        @book.destroy
+        redirect_to books_path
     end
-end
+
+    private 
+
+    def set_book
+        @book = Book.find(params[:id])
+    end
+
+    def book_params
+        params.require(:book).permit(:title, :author)
+    end
+
+    def require_same_user
+        if current_user != @book.user
+            flash[:alert] = "You can only edit or delete your own book"
+            redirect_to @book
+        end
+    end
 
 end

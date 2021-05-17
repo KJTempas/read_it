@@ -5,6 +5,7 @@
         <th>Name</th>
         <th>Email</th>
         <th># of Books Read</th>
+        <th colspan="3">Actions</th>
         
       </tr>
     </thead>
@@ -15,8 +16,18 @@
           <td><%= user.username %></td>
           <td><%= user.email %></td>
           <td> <%= user.books.count() %></td>
+          <td><%= link_to "View profile", user, class: "btn btn-success" %></td>
+          <% if logged_in? %>
+            <% if user == current_user %>
+              <td><%= link_to "Edit profile", edit_user_path(user), class: "btn btn-info" %></td>
+            <% end %>
+            <% if current_user.admin? %>
+              <td><%= link_to "Delete user", user_path(user), class: "btn btn-danger", method: :delete,
+              data: {confirm: "Are you sure you want to delete the user account and all associated articles?"} %></td>
+            <% end %>
+          <% end %>
           </tr>
-      <% end %>
+          <% end %>
     </tbody>
   </table>
 

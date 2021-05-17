@@ -5,6 +5,13 @@
       <%= will_paginate @users, :container => false %>
   </div>
 
+    <%= render 'user' %>
+
+<div class="apple_pagination">
+      <%= will_paginate @users, :container => false %>
+  </div>
+
+<!--
   <div class="container">
   <% @users.each do |user| %>
     <div class="row justify-content-md-center">
@@ -27,7 +34,7 @@
                 <% link_to "Delete user", user_path(user), class: "btn btn-outline-danger", method: :delete,
                 data: {confirm: "Are you sure you want to delete the user account and all associated articles?"} %>
               <% end %>
-            <% end %>
+            <% end%>
           </div>
           <div class="card-footer text-muted">
             <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
@@ -41,4 +48,4 @@
   
   <div class="apple_pagination">
       <%= will_paginate @books, :container => false %>
-  </div>
+  </div>-->

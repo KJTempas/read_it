@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
         @category = Category.new(category_params)
         if @category.save
             flash[:notice] = "Category was successfully created"
-            redirect_to @category
+            redirect_to @category #the show page
         else  
             render 'new'
         end
@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     end
 
     def show
-
+        @category = Category.find(params[:id])
     end
 
     private

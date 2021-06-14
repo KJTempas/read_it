@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :users, except: [:new]
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  get 'logout', to: 'sessions#destroy' #changed from delete to get per https://stackoverflow.com/questions/23368994/no-route-matches-get-logout-rails because could not log out user
   resources :categories, except: [:destroy]
 end

@@ -14,7 +14,7 @@
             <div class="card-text text-left">book by <%= simple_format(@book.author) %>
             </div>
             
-              <% if logged_in? && (@book.user == current_user || curent_user.admin?) %>
+              <% if logged_in? && (@book.user == current_user || current_user.admin?) %>
                 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-info" %>
                 <%= link_to "Delete", book_path(@book), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
               <% end %>

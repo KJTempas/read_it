@@ -11,12 +11,14 @@
           </div>
 
           <div class="card-body">
-            <div class="card-text text-left">book by <%= simple_format(@book.author) %>
+            <div class="card-text text-left mb-2"><b>Author:</b>  <%= @book.author %>
+            
+            <div class="card-text text-left"><b>Description: </b> <%= @book.description %>
             </div>
             
               <% if logged_in? && (@book.user == current_user || current_user.admin?) %>
-                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-info" %>
-                <%= link_to "Delete", book_path(@book), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-info mt-4" %>
+                <%= link_to "Delete", book_path(@book), class: "btn btn-outline-danger mt-4", method: :delete, data: {confirm: "Are you sure?"} %>
               <% end %>
             </div>
             <div class="card-footer text-muted">
